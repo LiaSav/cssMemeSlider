@@ -54,7 +54,7 @@ body {
 }
 
 .slider__dot-wrapper {
-    padding: 5px;
+    padding: 10px;
     margin: 0 3px;
     cursor: pointer;
 }
@@ -95,10 +95,6 @@ body {
     animation-name: fadeIn;
 }
 
-.fade-out {
-    animation-name: fadeOut;
-}
-
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -106,16 +102,6 @@ body {
 
     to {
         opacity: 100%;
-    }
-}
-
-@keyframes fadeOut {
-    from {
-        opacity: 100%;
-    }
-
-    to {
-        opacity: 0;
     }
 }
 

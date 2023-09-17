@@ -1,21 +1,20 @@
 const images = document.querySelectorAll('.slider__image');
 const imageActiveClassName = 'slider__image_active';
 
-const texts = document.querySelectorAll('.slider__text');
 const size = images.length;
 
-let currentSlide = 0;
-let activeDotNum = 0;
+const texts = document.querySelectorAll('.slider__text');
+const textActiveClassName = 'slider__text_active';
 
 const dots = document.querySelector('.slider__dots');
 const dotWrapperClassName = 'slider__dot-wrapper';
 const dotClassName = 'slider__dot';
 const dotActiveClassName = 'slider__dot_active';
 
-console.log(images);
-console.log(size);
+const fadeIn = 'fade-in';
 
-
+let currentSlide = 0;
+let activeDotNum = 0;
 
 dots.innerHTML = Array.from(Array(size).keys()).map(key => (
     `<div class="${dotWrapperClassName}" data-num="${key}">
@@ -34,29 +33,27 @@ function clickDot(e) {
     if (dotNumber === currentSlide) return;
     currentSlide = dotNumber;
 
-    changeCurrentSlide();
-
     dots.removeEventListener('click', (e) => clickDot(e));
     dots.removeEventListener('touchstart', (e) => clickDot(e));
+
+    changeCurrentSlide();
 }
 
 function changeCurrentSlide() {
     images.forEach(item => {
-        if (item.classList.contains(imageActiveClassName, 'fade-in')) {
-            item.classList.remove(imageActiveClassName, 'fade-in');
-            // item.classList.add('fade-out');
+        if (item.classList.contains(imageActiveClassName, fadeIn)) {
+            item.classList.remove(imageActiveClassName, fadeIn);
         }
     });
 
     texts.forEach(item => {
-        if (item.classList.contains('slider__text_active', 'fade-in')) {
-            item.classList.remove('slider__text_active', 'fade-in');
-            // item.classList.add('fade-out');
+        if (item.classList.contains(textActiveClassName, fadeIn)) {
+            item.classList.remove(textActiveClassName, fadeIn);
         }
     });
 
-    images[currentSlide].classList.add(imageActiveClassName, 'fade-in');
-    texts[currentSlide].classList.add('slider__text_active', 'fade-in');
+    images[currentSlide].classList.add(imageActiveClassName, fadeIn);
+    texts[currentSlide].classList.add(textActiveClassName, fadeIn);
 
     sliderDot[activeDotNum].classList.remove(dotActiveClassName);
     sliderDot[currentSlide].classList.add(dotActiveClassName);
